@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.6.172/build/pdf.min.js "></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
     <script type="module">
@@ -131,8 +132,8 @@
         for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
           const page = await pdf.getPage(pageNumber);
           const viewport = page.getViewport({ scale: 1.5 });
-          const canvas = document.createElement("canvas");
-          canvas.setAttribute("id", "tes");
+          const canvas = document.getElementById("tes");
+          // canvas.setAttribute("id", "tes");
           canvas.height = viewport.height;
           canvas.width = viewport.width;
           container.appendChild(canvas);
@@ -155,8 +156,8 @@
           const {
             data: { text },
           } = await worker.recognize(image);
-          const section = document.createElement("section");
-          const pre = document.createElement("pre");
+          const section = document.getElementsByClassName("right");
+          const pre = document.getElementById("returno");
           pre.appendChild(document.createTextNode(text));
           section.appendChild(pre);
           container.appendChild(section);
@@ -229,7 +230,7 @@
   <body>
 
     <canvas id="bg"></canvas>  
-    <canvas id="tes"></canvas>
+
 
     <main>
 
@@ -237,7 +238,6 @@
         <h1>Sam Spearing</h1>
         <p>🚀 Welcome to my website!</p>
       </header>
-
 
       <blockquote>
         <p>I like making stuff and putting it on the internet</p>
@@ -259,10 +259,9 @@
 
       </section>
 
-      <section class="light">
+      <section class="right">
         <h2>👩🏽‍🚀 Projects</h2>
-
-        <body>
+        <div>
           <h1>TesseRecognition</h1>
           <p>
             a
@@ -283,14 +282,18 @@
           <div id="textual"></div>
           <div id="loading">Loading...</div>
           <div id="error"></div>
-        </body>
+          <pre id="returno"></pre>
+          <canvas id="tes"></canvas>
+        </div>
         <p>
-          GPT-2 Based Conditional Text Generator - GPT-2 Long Short Term Memory Recurrent Neural Network for writing
-          cover letters, SpaCy NLP for custom skill extraction and contextualization of cover letters.
+          Traction: A top down speedrun of a racetrack made in Armory 3D game engine.
+          <embed src="https://ipthat8ezgpcdxyi8o60dw.on.drv.tw/www.embeddracecar/" style="width:100%; height: 1000px;">
+
         </p>
 
         <p>
-          Raster Image Pyramid and Mosaic Dataset CLI - Geographical data interpreter program for EDR.
+          GPT-2 Based Conditional Text Generator - GPT-2 Long Short Term Memory Recurrent Neural Network for writing
+          cover letters, SpaCy NLP for custom skill extraction and contextualization of cover letters.
         </p>
 
         <p>
@@ -356,10 +359,8 @@
         <p>Thanks for Reading!</p>
       </blockquote>
 
-
     </main>
     
-    <script type="module" src="/main.js"></script>
 
   </body>
 </html>
