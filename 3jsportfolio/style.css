@@ -1,5 +1,81 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 
+<<<<<<< Updated upstream
+=======
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.parallel-columns {
+  column-count: 2; /* Split the text into two columns */
+  column-gap: 0px; /* Set the gap between columns */
+  /*column-rule: 1px solid #ccc;  Add a border between columns */
+}
+
+select {
+  font-size: 1.15rem;
+  font-family: inherit;
+  line-height: inherit;
+  padding-left: 1rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+select,
+#file-input-label {
+  padding: 0.5em;
+  border: thin solid grey;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #070707;
+}
+
+#language-select{
+  background-color: #f6f6fb;
+}
+
+#input-container {
+  margin-top: 2rem;
+}
+
+#input-container div {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+#loading,
+#error {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+#loading {
+  display: none;
+}
+
+section + section,
+section:first-child {
+  max-width: 800px; /* Maximum width of the section container */
+  margin: 0 auto; /* Center the section container horizontally */
+  padding: 20px; /* Add some padding to the section container */
+}
+
+pre {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+#tes {
+  display: none;
+}
+
+>>>>>>> Stashed changes
 canvas {
   position: fixed;
   top: 0;
