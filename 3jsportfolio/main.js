@@ -20,13 +20,38 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
-// Torus
+// rings
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
-const torus = new THREE.Mesh(geometry, material);
+       // Load texture for Saturn's rings
+       const textureLoader = new THREE.TextureLoader();
+       const ringTexture = textureLoader.load('saturn-rings-top.png'); // Replace with an actual URL
 
-scene.add(torus);
+       // Geometry for the rings
+       const ringGeometry = new THREE.RingGeometry(10, 5, 64);
+       var pos = ringGeometry.attributes.position;
+       var v3= new THREE.Vector3();
+       for (let i = 0; i < pos.count; i++){
+         v3.fromBufferAttribute(pos, i);
+         ringGeometry.attributes.uv.setXY(i, v3.length() < 4 ? 0 : 1, 1);
+       }
+
+       // Material for the rings
+       const ringMaterial = new THREE.MeshBasicMaterial({
+           map: ringTexture,
+           color: 0xffffff,
+           side: THREE.DoubleSide,
+           transparent: true
+       });
+
+       // Create the mesh for the rings
+       const rings = new THREE.Mesh(ringGeometry, ringMaterial);
+       rings.rotation.x = Math.PI / 2;
+       rings.position.x+=1.5;
+       rings.position.z-=3;
+       // Add the rings to the scene
+       scene.add(rings);
+
+
 
 // Lights
 
@@ -44,20 +69,20 @@ scene.add(pointLight, ambientLight);
 
 // const controls = new OrbitControls(camera, renderer.domElement);
 
-function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
-  const star = new THREE.Mesh(geometry, material);
+// function addStar() {
+//   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+//   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+//   const star = new THREE.Mesh(geometry, material);
 
-  const [x, y, z] = Array(3)
-    .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(100));
+//   const [x, y, z] = Array(3)
+//     .fill()
+//     .map(() => THREE.MathUtils.randFloatSpread(100));
 
-  star.position.set(x, y, z);
-  scene.add(star);
-}
+//   star.position.set(x, y, z);
+//   scene.add(star);
+// }
 
-Array(200).fill().forEach(addStar);
+// Array(200).fill().forEach(addStar);
 
 // Background
 
@@ -117,9 +142,9 @@ moveCamera();
 function animate() {
   requestAnimationFrame(animate);
 
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
+  rings.rotation.x += 0.01;
+  rings.rotation.y += 0.005;
+  rings.rotation.z += 0.01;
 
   moon.rotation.x += 0.005;
 

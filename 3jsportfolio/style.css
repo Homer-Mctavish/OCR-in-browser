@@ -8,10 +8,41 @@ a:hover {
   text-decoration: underline;
 }
 
+.container {
+  display: flex;
+}
+.half {
+  flex: 1;
+  padding: 10px;
+  /* border: 1px solid #000; */
+}
+
+
+
+textarea {
+  width: 100%;
+  height: 150px; /* Adjust as needed */
+}
+button {
+  padding: 10px 20px; /* Add padding for better appearance */
+}
+
 .parallel-columns {
   column-count: 2; /* Split the text into two columns */
   column-gap: 0px; /* Set the gap between columns */
   /*column-rule: 1px solid #ccc;  Add a border between columns */
+}
+
+.iframe-container {
+  width: 100%;
+  height: 500px; /* Adjust as needed */
+  overflow: hidden;
+  position: relative;
+}
+.iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 select {
@@ -57,9 +88,13 @@ select,
   display: none;
 }
 
+html {
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
 section + section,
 section:first-child {
-  max-width: 800px; /* Maximum width of the section container */
+  max-width: 1600px; /* Maximum width of the section container */
   margin: 0 auto; /* Center the section container horizontally */
   padding: 20px; /* Add some padding to the section container */
 }
@@ -132,6 +167,7 @@ canvas {
     font-size: 1.25rem;
     line-height: 1.5;
     margin-bottom: var(--spacing);
+
   }
 
   blockquote {
