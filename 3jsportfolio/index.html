@@ -265,42 +265,45 @@
 
 
 
-              // Function to handle the button click event
-              document.getElementById("generateCL").addEventListener("click", async () => {
-            // Get the string from the textarea
-            const job = document.getElementById("inputTextArea").textContent;
-            const skills = document.getElementById("outputTextArea").textContent;
+     // Function to handle the button click event
+document.getElementById("generateCL").addEventListener("click", async () => {
+    // Get the string from the textarea
+    const job = document.getElementById("inputTextArea").value; // Use value instead of textContent for textarea
+    const skills = document.getElementById("outputTextArea").value; // Use value instead of textContent for textarea
 
-            // Create an object with the string
-            const data = { job, skills };
+    // Create an object with the string
+    const data = { job, skills };
 
-            try {
-                // Make a POST request to the FastAPI endpoint
-                const response = await fetch('https://replicapi.fly.dev/update/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
+    try {
+        // Make a POST request to the FastAPI endpoint
+        const response = await fetch('https://replicapi.fly.dev/update/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
 
-                // Check if the request was successful
-                if (!response.ok) {
-                    throw new Error('Failed to send string');
-                }
+        // Check if the request was successful
+        if (!response.ok) {
+            throw new Error('Failed to send string');
+        }
 
-                // Log the response from the server
-                const responseData = await response.json();
-                    // Get the textarea element
-                  const textarea = document.getElementById("inputTextArea");
-                  
-                  // Set the value of the textarea
-                  textarea.value = values;
-                console.log(responseData);
-            } catch (error) {
-                console.error('Error:', error.message);
-            }
-        });  
+        // Log the response from the server
+        const responseData = await response.json();
+        
+        // Get the textarea element
+        const textarea = document.getElementById("inputTextArea");
+        
+        // Set the value of the textarea to the response data
+        textarea.value = responseData; // Assuming responseData is a string. Adjust if needed.
+        
+        console.log(responseData);
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+});
+
 
         function resizeIframe() {
             var iframe = document.getElementById('myIframe');
