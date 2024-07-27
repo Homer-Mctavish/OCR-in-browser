@@ -236,7 +236,7 @@
 
             try {
                 // Make a POST request to the FastAPI endpoint
-                const response = await fetch('https://fnsa.fly.dev/endpoint/', {
+                const response = await fetch('http://127.0.0.1:8000/endpoint/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -271,8 +271,20 @@ document.getElementById("generateCL").addEventListener("click", async () => {
     const job = document.getElementById("inputTextArea").value; // Use value instead of textContent for textarea
     const skills = document.getElementById("outputTextArea").value; // Use value instead of textContent for textarea
 
+<<<<<<< HEAD
     // Create an object with the string
     const data = { job, skills };
+=======
+            try {
+                // Make a POST request to the FastAPI endpoint
+                const response = await fetch('http://127.0.0.1:8000/gpttext/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+>>>>>>> parent of 3ba4bf0 (salvaging index and main.js)
 
     try {
         // Make a POST request to the FastAPI endpoint
